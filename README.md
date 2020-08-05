@@ -1,24 +1,34 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+run with 
+rails s
 
-Things you may want to cover:
+list all doctors
+GET http://localhost:3000/doctors
 
-* Ruby version
+delete appointment
+DELETE	http://localhost:3000/doctors/:id	
 
-* System dependencies
+add appointment
+POST	http://localhost:3000/appointments/
 
-* Configuration
+list all appoitnments for doctor on day
+GET http://localhost:3000/doctors/:id/:date
 
-* Database creation
+notes: 
+TESTS NEEDS TESTS
+params not sanitized, need to sanitize.
 
-* Database initialization
+using the assumption that patients will also exist eventually
 
-* How to run the test suite
+within 15 min intervals, no more than 3 of the same datetime - kinda complicated?
+probably too niche for basic validations:
 
-* Services (job queues, cache servers, search engines, etc.)
+no more than 3: 
+search db for entries with the same datetime, if <2, we good, validation success
+if is 3 or more, then validation fails
 
-* Deployment instructions
+15 minute intervals:
+this should probably be handled in the front, but if it escapes, then should probably filter datetime/ time into 15 min intervals, also in validations
 
-* ...
+I've sunk more than an hour into getting date/time stuff set up, so I'm going to pseudocode a bit of it to get the ball rolling. 
